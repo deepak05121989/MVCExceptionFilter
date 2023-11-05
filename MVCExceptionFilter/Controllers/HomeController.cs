@@ -9,14 +9,15 @@ using System.Web.Mvc;
 namespace MVCExceptionFilter.Controllers
 {
     [CustomeExceptionFilter]
+    [Route("/api/{controller}")]
     public class HomeController : Controller
     {
 
-        [OutputCache(Duration =5)]
-        public string Index()
+        // [OutputCache(Duration =5)]
+        public ActionResult Index()
         {
 
-            return DateTime.Now.ToString("T");
+            return View();
 
         }
 
@@ -35,10 +36,18 @@ namespace MVCExceptionFilter.Controllers
                 Response.Write(v);
             ViewBag.Result = c.ToString();
             return View();
-            
+
         }
 
         public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        [Route("{Id}")]// This is use to set the custome routing in action level
+        [ActionName("Login")]// This attribute is use to change the controller action name
+        public ActionResult UserLogin()
         {
             ViewBag.Message = "Your contact page.";
 

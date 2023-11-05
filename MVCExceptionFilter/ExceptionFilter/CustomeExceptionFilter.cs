@@ -15,9 +15,7 @@ namespace MVCExceptionFilter.ExceptionFilter
             {
                 filterContext.Result = new RedirectResult("~/Content/ErrorPage.html");
                 filterContext.ExceptionHandled = true;
-                }
-           
-
+            }
         }
     }
 }
